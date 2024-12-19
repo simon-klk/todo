@@ -1,10 +1,11 @@
 from todo import *
 from new_list import *
+from todo_frame import *
 # from taskwindow import *
 import customtkinter as tk
 
-
 listes = ["Arbeit", "Privat", "Einkaufen", "Schule", "Sonstiges"]
+todos = ["Schuhe putzen", "Rainer telefonieren", "Banane"]
 
 # Set the appearance mode to dark
 tk.set_appearance_mode("dark")
@@ -25,7 +26,6 @@ myfont = tk.CTkFont(family="Arial", size=16)
 def open_list(list_id):
     ToDoList(main, listes[list_id])
 
-"""Listenauswahl - oben"""
 
 # Frame für die Auswahl der Liste
 top_frame = tk.CTkFrame(main, width=892, height=60)
@@ -60,6 +60,18 @@ class ToDoList:
         self.frame.place(x=5, y=70)
         self.label = tk.CTkLabel(self.frame, text=name, font=myfont, width=100, height=40)
         self.label.place(x=0, y=0)
+        new_x = 5
+        new_y = 50
+        i = 1
+        for todo in todos: 
+            ToDoFrame(self.frame, new_x, new_y, todo)
+            new_y += 50
+            i += 1
+            if i % 5 == 0:
+                new_x = 5
+                new_y = 50
+
+        
 
 show_list()
 main.mainloop()
