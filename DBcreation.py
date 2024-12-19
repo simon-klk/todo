@@ -10,7 +10,7 @@ list_name = "list_name varchar(20)"
 list_elem = "list_elem int"
 list_beschreibung = "list_beschreibung varchar(200)"
 list_erstelldatum = "list_erstelldatum date"
-list_setPrimary = "PRIMARY KEY list_ID"
+list_setPrimary = "PRIMARY KEY (list_ID)"
 
-lists_string = "CREATE TABLE IF NOT EXISTS listen({list_id},{list_name},{list_elem},{list_beschreibung},{list_erstelldatum},{list_setPrimary});".format()
+lists_string = f"CREATE TABLE IF NOT EXISTS listen(  {list_id},{list_name},{list_elem},{list_beschreibung},{list_erstelldatum},{list_setPrimary}  );"
 cursor.execute(lists_string)
