@@ -1,6 +1,7 @@
 import todo as td
 import customtkinter as tk
 from datetime import datetime
+from tkcalendar import Calendar, DateEntry
 
 class TaskWindow:
     def __init__(self, root):
@@ -18,7 +19,7 @@ class TaskWindow:
         self.task_date.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
         self.task_date.insert(0, datetime.now().strftime("%Y-%m-%d"))
 
-        self.task_end_date = tk.CTkEntry(self.root, placeholder_text="Enddatum")
+        self.task_end_date = DateEntry(self.root, date_pattern='yyyy-mm-dd', show_calendar=True, width=20)
         self.task_end_date.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
         self.add_task_button = tk.CTkButton(self.root, text="Aufgabe hinzufügen", command=self.add_task)
