@@ -5,7 +5,6 @@ import customtkinter as tk
 
 
 listes = ["Arbeit", "Privat", "Einkaufen", "Schule", "Sonstiges"]
-myfont = tk.Arial(14)
 
 # Set the appearance mode to dark
 tk.set_appearance_mode("dark")
@@ -16,6 +15,9 @@ main = tk.CTk()
 main.title("To-Do List")
 main.geometry("900x600")
 main.resizable(False, False)
+
+# Create the font after initializing the main window
+myfont = tk.CTkFont(family="Arial", size=16)
 
 """Buttons - oben"""
 # Open List Button
@@ -56,7 +58,7 @@ class ToDoList:
         self.master = master
         self.frame = tk.CTkFrame(self.master, width=892, height=400)
         self.frame.place(x=5, y=70)
-        self.label = tk.CTkLabel(self.frame, text=name,font=myfont , width=892, height=40)
+        self.label = tk.CTkLabel(self.frame, text=name, font=myfont, width=100, height=40)
         self.label.place(x=0, y=0)
 
 show_list()
