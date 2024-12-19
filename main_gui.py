@@ -5,7 +5,7 @@ from todo_frame import *
 import customtkinter as tk
 
 listes = ["Arbeit", "Privat", "Einkaufen", "Schule", "Sonstiges"]
-todos = ["Schuhe putzen", "Rainer telefonieren", "Banane"]
+todos = ["Schuhe putzen", "Rainer telefonieren", "Banane", "test1", "test2", "test3"]
 
 # Set the appearance mode to dark
 tk.set_appearance_mode("dark")
@@ -63,15 +63,15 @@ class ToDoList:
     def import_todo(self):
         new_x = 5
         new_y = 50
-        i = 1
+        i = 0
         for todo in todos: 
-            print(todo, new_x, new_y)
+            print(todo, new_x, new_y, i)
             ToDoFrame(master=self.frame, x=new_x, y=new_y, todo=todo)
-            new_y += 50
+            new_x += 180
             i += 1
             if i % 5 == 0:
                 new_x = 5
-                new_y = 50
+                new_y = 220
 
         
 
