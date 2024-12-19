@@ -7,7 +7,7 @@ tk.set_default_color_theme("blue")
 
 main = tk.CTk()
 main.title("To-Do List")
-main.geometry("400x400")
+main.geometry("900x600")
 
 
 
