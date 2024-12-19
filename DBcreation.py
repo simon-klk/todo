@@ -44,3 +44,8 @@ items_string = f"""
         """
 
 cursor.execute(items_string)
+
+#Ausgaben
+#cursor.execute("INSERT INTO items (item_text, item_beschreibung, item_datum, item_end_datum, list_ID) VALUES('Aufgabe 1', 'Beschreibung später machen', '2024-12-19', '2024-12-21', '1')")
+#output = cursor.execute("SELECT * FROM items").fetchall()
+#print(output)
