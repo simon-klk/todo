@@ -1,7 +1,7 @@
 # Hier kommen die ToDos rein
 
 class ToDo:
-    def __init__(self, text, beschreibung, datum, end_datum):
+    def __init__(self, text, beschreibung, datum, end_datum, liste):
         self.text = text
         self.done = False
 
@@ -11,3 +11,8 @@ class ToDo:
 
     def mark_as_undone(self):
         self.done = False
+
+class Liste:
+    def __init__(self, name):
+        self.name = name
+        self.todos = []
