@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_DB_and_Tables():
     connection = sqlite3.connect("Listen.db")
     cursor = connection.cursor()
@@ -46,11 +47,15 @@ def create_DB_and_Tables():
 
     cursor.execute(items_string)
 
+# Benutze Commit nach jeder Änderung (Update, Insert into, Delete)
+def commit():
+    connection = sqlite3.connect("Listen.db")
+    connection.commit()
 
-#Ausgaben
-connection = sqlite3.connect("Listen.db")
-cursor = connection.cursor()
-#cursor.execute("INSERT INTO items (item_text, item_beschreibung, item_datum, item_end_datum, list_ID) VALUES('Aufgabe 2', 'Beschreibung später machen', '2024-12-19', '2024-12-21', '1')")
-#cursor.execute("INSERT INTO items (item_text, item_beschreibung, item_datum, item_end_datum, list_ID) VALUES('Aufgabe 3', 'Beschreibung später machen', '2024-12-19', '2024-12-21', '1')")
-output = cursor.execute("SELECT * FROM items").fetchall()
-print(output)
+# Benutze Rollback um Änderungen rückgängig zu machen       (NOCH NICHT GETESTET)
+def rollback():
+    connection = sqlite3.connect("Listen.db")
+    connection.rollback()
+
+
+
