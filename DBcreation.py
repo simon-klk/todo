@@ -6,6 +6,11 @@ class sqliteDB:
         self.connection = connection  
         self.cursor = self.connection.cursor()  
 
+
+
+        #rows = self.cursor.execute("SELECT * FROM sqlite_master where type='table';").fetchall()
+        #print(rows)
+
     def create_DB_and_Tables(self):
 
         # Create Table that holds the ToDo-Lists
@@ -14,6 +19,7 @@ class sqliteDB:
         list_elem = "list_elem int"     #Number of items inside LISTE
         list_beschreibung = "list_beschreibung varchar(200)"
         list_erstelldatum = "list_erstelldatum date"
+    
 
 
         lists_string = f"""
@@ -64,4 +70,5 @@ class sqliteDB:
         
 
 
+#object = sqliteDB(connection=sqlite3.connect("Listen.db"))
 
