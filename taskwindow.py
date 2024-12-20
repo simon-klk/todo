@@ -32,8 +32,8 @@ class TaskWindow:
         beschreibung = self.task_description.get()
         datum = self.task_date.get()
         end_datum = self.task_end_date.get()
-
-        new_task = td.ToDo(text, beschreibung, datum, end_datum)
+        liste = "default"
+        new_task = td.ToDo(text, beschreibung, end_datum, liste)
         self.tasks.append(new_task)
         print(f"Aufgabe hinzugefügt: {new_task.text}")
 
