@@ -2,12 +2,22 @@ import todo as td
 import customtkinter as tk
 from datetime import datetime
 from tkcalendar import Calendar, DateEntry
+from DBcreation import *
+import sqlite3
+
+
+
+db = sqliteDB(sqlite3.connect("Listen.db"))
 
 class TaskWindow:
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, list_id, refresh_callback=None):
+        self.root = tk.CTkToplevel()  # Changed from CTk to CTkToplevel
         self.root.title("Aufgabe hinzufügen")
-        self.root.geometry("350x450")
+        self.root.geometry("350x450+100+100")
+        self.root.attributes('-topmost', True)
+        self.list_id = list_id
+        self.refresh_callback = refresh_callback
+        
 
         self.task_text = tk.CTkEntry(self.root, placeholder_text="Aufgabe")
         self.task_text.place(relx=0.5, rely=0.2, anchor=tk.CENTER)
@@ -32,15 +42,8 @@ class TaskWindow:
         beschreibung = self.task_description.get()
         datum = self.task_date.get()
         end_datum = self.task_end_date.get()
-        liste = "default"
+        liste = self.list_id
         new_task = td.ToDo(text, beschreibung, end_datum, liste)
-        self.tasks.append(new_task)
-        print(f"Aufgabe hinzugefügt: {new_task.text}")
-
-if __name__ == "__main__":
-    tk.set_appearance_mode("dark")
-    tk.set_default_color_theme("blue")
-
-    main = tk.CTk()
-    app = TaskWindow(main)
-    main.mainloop()
+        self.root.destroy()
+        if self.refresh_callback:
+            self.refresh_callback()

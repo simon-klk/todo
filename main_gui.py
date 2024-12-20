@@ -1,7 +1,7 @@
 from todo import *
 from new_list import *
 from todo_frame import *
-# from taskwindow import *
+from taskwindow import *
 import customtkinter as tk
 from DBcreation import *
 import sqlite3
@@ -24,7 +24,7 @@ db.commit()
 
 db.cursor.execute("SELECT * FROM listen")
 lists = db.cursor.fetchall()
-print(lists[1][1])    
+
 
 
 
@@ -53,7 +53,6 @@ myfont = tk.CTkFont(family="Arial", size=16)
 
 def open_list(list_name):
     todo_list = ToDoList(main, list_name)
-    print(list_name)
     todo_list.import_todo()
 
 
@@ -84,13 +83,23 @@ def show_list():
 class ToDoList:
     def __init__(self, master, list):
         self.master = master
-        self.frame = tk.CTkFrame(self.master, width=892, height=480)
+        self.frame = tk.CTkFrame(self.master, width=892, height=420)
         self.frame.place(x=5, y=70)
         self.label = tk.CTkLabel(self.frame, text=list[1], font=myfont, width=100, height=40)
         self.label.place(x=0, y=0)
         
         self.list_ID = list[0]
-
+        """Button NEW TASK"""  
+        new_task_button = tk.CTkButton(self.frame, text="Neue Aufgabe", width=90, height=40, command=lambda: TaskWindow(self.list_ID, self.refresh_todos)) #Welche Liste
+        new_task_button.place(x=790, y=375)  
+        
+    def refresh_todos(self):
+        # Clear existing todo frames
+        for widget in self.frame.winfo_children():
+            if isinstance(widget, ToDoFrame):
+                widget.destroy()
+        # Re-import todos
+        self.import_todo()
     
     def import_todo(self):
         new_x = 5
@@ -108,7 +117,7 @@ class ToDoList:
                 new_x = 5
                 new_y = 220
 
-        
+
 
 show_list()
 main.mainloop()
