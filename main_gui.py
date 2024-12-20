@@ -5,7 +5,11 @@ from todo_frame import *
 import customtkinter as tk
 
 listes = ["Arbeit", "Privat", "Einkaufen", "Schule", "Sonstiges"]
-todos = ["Schuhe putzen", "Rainer telefonieren", "Banane", "test1", "test2", "test3"]
+todos = ["Schuhe putzen", "Rainer telefonieren", "Banane", "test1", "test2", "test3", ]
+
+for i in range(10):
+    ToDo = ToDo("Text","Beschreibung", )
+
 
 # Set the appearance mode to dark
 tk.set_appearance_mode("dark")
@@ -54,7 +58,7 @@ def show_list():
 class ToDoList:
     def __init__(self, master, name):
         self.master = master
-        self.frame = tk.CTkFrame(self.master, width=892, height=400)
+        self.frame = tk.CTkFrame(self.master, width=892, height=480)
         self.frame.place(x=5, y=70)
         self.label = tk.CTkLabel(self.frame, text=name, font=myfont, width=100, height=40)
         self.label.place(x=0, y=0)
@@ -65,7 +69,6 @@ class ToDoList:
         new_y = 50
         i = 0
         for todo in todos: 
-            print(todo, new_x, new_y, i)
             ToDoFrame(master=self.frame, x=new_x, y=new_y, todo=todo)
             new_x += 180
             i += 1
