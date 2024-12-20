@@ -28,13 +28,6 @@ lists = db.cursor.fetchall()
 
 
 
-
-
-# todos = ["Schuhe putzen", "Rainer telefonieren", "Banane", "test1", "test2", "test3", ]
-
-
-
-
 # Set the appearance mode to dark
 tk.set_appearance_mode("dark")
 tk.set_default_color_theme("blue")
