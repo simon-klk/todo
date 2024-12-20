@@ -25,6 +25,8 @@ class sqliteDB:
                 {list_erstelldatum}  
                 );
                 """
+                
+        self.cursor.execute(lists_string)
 
 
 

@@ -3,12 +3,33 @@ from new_list import *
 from todo_frame import *
 # from taskwindow import *
 import customtkinter as tk
+from DBcreation import *
+import sqlite3
 
-listes = ["Arbeit", "Privat", "Einkaufen", "Schule", "Sonstiges"]
+
+
+db = sqliteDB(sqlite3.connect("Listen.db"))
+
+db.create_DB_and_Tables()
+db.commit()
+
+
+db.cursor.execute("SELECT list_name FROM listen")
+list_names = db.cursor.fetchall()
+
+db.cursor.execute("SELECT list_ID FROM listen")
+list_IDs = db.cursor.fetchall()
+
+# Print the results
+for list_name in list_names:
+    print(list_name)
+
+# Convert the fetched list names to a list of strings
+listes = [name[0] for name in list_names]
+
 todos = ["Schuhe putzen", "Rainer telefonieren", "Banane", "test1", "test2", "test3", ]
 
-for i in range(10):
-    ToDo = ToDo("Text","Beschreibung", )
+
 
 
 # Set the appearance mode to dark
@@ -44,6 +65,7 @@ new_list_button.place(x=790, y=10)
 def show_list():
     def on_click(list_name):
         open_list(listes.index(list_name))
+        print(listes.index(list_name))
 
     list_buttons = []
     i = 10
