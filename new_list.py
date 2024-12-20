@@ -1,0 +1,2 @@
+#INSERT INTO listen (list_name, list_elem, list_beschreibung, list_erstelldatum) VALUES (name, 0, beschreibung, datum)
+# list_elem = 0 because when first creating the list there are no values inside it
